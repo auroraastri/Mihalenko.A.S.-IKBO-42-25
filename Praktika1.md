@@ -73,7 +73,7 @@ labex:project/ $ ./banner "Hello from RTU MIREA!"
 +-----------------------+
 | Hello from RTU MIREA! |
 +-----------------------+
-
+```
 
 ## Задача 4
 
