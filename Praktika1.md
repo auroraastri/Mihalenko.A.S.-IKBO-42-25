@@ -85,6 +85,26 @@ labex:project/ $ ./banner "Hello from RTU MIREA!"
 h hello include int main n printf return stdio void world
 ```
 
+код внутри файла yippee на языке c++
+```
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    cout << "lalalalalala" << endl;
+    return 0;
+}
+```
+Ответ:
+```
+grep -oE '[a-za-Z_][a-zA-Z0-9_]*' yippee | sort -u | xargs
+```
+Вывод:
+```
+cout endl include int iostream lalalalalala main namespace return std using
+```
+
 ## Задача 5
 
 Написать программу для регистрации пользовательской команды (правильные права доступа и копирование в /usr/local/bin).
