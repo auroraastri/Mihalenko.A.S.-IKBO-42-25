@@ -25,7 +25,7 @@
 
 Ответ:
 ```
-labex:project/ $ awk '!/^#/ && NF {print $2, $1}' /etc/protocols | sort -nr | head -5
+labex:project/ $ awk '{print $2, $1}' /etc/protocols | sort -nr | head -5
 142 rohc
 141 wesp
 140 shim6
