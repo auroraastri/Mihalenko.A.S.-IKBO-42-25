@@ -45,6 +45,36 @@ labex:project/ $ awk '{print $2, $1}' /etc/protocols | sort -nr | head -5
 
 Перед отправкой решения проверьте его в ShellCheck на предупреждения.
 
+Код файла баннер, созданного в консоли:
+```
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <text>" >&2
+    exit 1
+fi
+
+text="$*"
+len=${#text}
+width=$((len + 2))
+
+printf -v dashes '%*s' "$width" ''
+dashes=${dashes// /-}
+
+printf '+%s+\n' "$dashes"
+printf '| %s |\n' "$text"
+printf '+%s+\n' "$dashes"
+```
+Ответ:
+```
+labex:project/ $ ./banner "YAY"
++-----+
+| YAY |
++-----+
+labex:project/ $ ./banner "Hello from RTU MIREA!"
++-----------------------+
+| Hello from RTU MIREA! |
++-----------------------+
+
+
 ## Задача 4
 
 Написать программу для вывода всех идентификаторов (по правилам C/C++ или Java) в файле (без повторений).
