@@ -23,6 +23,14 @@
 138 manet
 ```
 
+Ответ:
+labex:project/ $ awk '!/^#/ && NF {print $2, $1}' /etc/protocols | sort -nr | head -5
+142 rohc
+141 wesp
+140 shim6
+139 hip
+138 manet
+
 ## Задача 3
 
 Написать программу banner средствами bash для вывода текстов, как в следующем примере (размер баннера должен меняться!):
