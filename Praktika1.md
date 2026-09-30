@@ -229,13 +229,13 @@ find "$dir" -maxdepth 1 -type f -name "*.$ext" -print0 | tar --null -T - -cf "ar
 
 Проверка кода:
 ```
-labex:project/ $ nano arch
-labex:project/ $ chmod +x arch
-labex:project/ $ shellcheck arch
+labex:project/ $ nano eight
+labex:project/ $ chmod +x eight
+labex:project/ $ shellcheck eight
 labex:project/ $ mkdir t8 && cd t8
 labex:project/ $ touch a.txt b.txt c.log
 labex:project/ $ cd ..
-labex:project/ $ ./arch t8 txt
+labex:project/ $ ./eight t8 txt
 labex:project/ $ tar -tf archive_txt.tar
 ```
 Вывод:
