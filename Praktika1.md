@@ -213,6 +213,37 @@ labex:project/ $ ./seven t7
 
 Написать программу, которая находит все файлы в данном каталоге с расширением, указанным в качестве аргумента и архивирует все эти файлы в архив tar.
 
+Код файла eight, созданного в консоли:
+```
+#!/bin/bash
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <dir> <extension>" >&2
+    exit 1
+fi
+
+dir="$1"
+ext="$2"
+
+find "$dir" -maxdepth 1 -type f -name "*.$ext" -print0 | tar --null -T - -cf "archive_$ext.tar"
+```
+
+Проверка кода:
+```
+labex:project/ $ nano arch
+labex:project/ $ chmod +x arch
+labex:project/ $ shellcheck arch
+labex:project/ $ mkdir t8 && cd t8
+labex:project/ $ touch a.txt b.txt c.log
+labex:project/ $ cd ..
+labex:project/ $ ./arch t8 txt
+labex:project/ $ tar -tf archive_txt.tar
+```
+Вывод:
+```
+764efa883dda1e11db47671c4a3bbd9e  t7/a.txt
+764efa883dda1e11db47671c4a3bbd9e  t7/b.txt
+```
+
 ## Задача 9
 
 Написать программу, которая заменяет в файле последовательности из 4 пробелов на символ табуляции. Входной и выходной файлы задаются аргументами.
