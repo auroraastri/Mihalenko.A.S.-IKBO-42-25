@@ -301,13 +301,13 @@ find "$1" -type f -name '*.txt' -empty
 
 Проверка кода:
 ```
-labex:project/ $ nano empty_files.sh
-labex:project/ $ chmod +x empty_files.sh
-labex:project/ $ shellcheck empty_files.sh
+labex:project/ $ nano ten
+labex:project/ $ chmod +x ten
+labex:project/ $ shellcheck ten
 labex:project/ $ mkdir t10
 labex:project/ $ touch t10/empty.txt
 labex:project/ $ echo hi > t10/full.txt
-labex:project/ $ ./empty_files.sh t10
+labex:project/ $ ./ten t10
 ```
 Вывод:
 ```
