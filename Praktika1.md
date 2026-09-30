@@ -300,7 +300,7 @@ echo hi > t10/full.txt
 ```
 Вывод:
 ```
-764efa883dda1e11db47671c4a3bbd9e t10/empty.txt
+t10/empty.txt
 ```
 
 ## Полезные ссылки
