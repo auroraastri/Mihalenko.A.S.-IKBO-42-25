@@ -150,6 +150,32 @@ labex:project/ $ ls -l /usr/local/bin/banner
 
 Написать программу для проверки наличия комментария в первой строке файлов с расширением c, js и py.
 
+Код файла six, созданного в консоли:
+```
+#!/bin/bash
+dir="${1:-.}"
+
+find "$dir" -type f \( -name '*.c' -o -name '*.js' -o -name '*.py' \) | while IFS= read -r f; do
+    first=$(head -n 1 "$f")
+    case "$f" in
+        *.c|*.js) pattern='^[[:space:]]*(//|/\*)' ;;
+        *.py)     pattern='^[[:space:]]*#' ;;
+    esac
+    if [[ $first =~ $pattern ]]; then
+        echo "$f: комментарий есть"
+    else
+        echo "$f: комментария нет"
+    fi
+done
+```
+
+Ответ:
+```
+labex:project/ $ nano six
+labex:project/ $ chmod +x six
+labex:project/ $ shellcheck six
+```
+
 ## Задача 7
 
 Написать программу для нахождения файлов-дубликатов (имеющих 1 или более копий содержимого) по заданному пути (и подкаталогам).
