@@ -248,6 +248,31 @@ labex:project/ $ tar -tf archive_txt.tar
 
 Написать программу, которая заменяет в файле последовательности из 4 пробелов на символ табуляции. Входной и выходной файлы задаются аргументами.
 
+Код файла nine, созданного в консоли:
+```
+#!/bin/bash
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <input> <output>" >&2
+    exit 1
+fi
+
+sed 's/    /\t/g' "$1" > "$2"
+```
+
+Проверка кода:
+```
+labex:project/ $ nano nine
+labex:project/ $ chmod +x nine
+labex:project/ $ shellcheck nine
+labex:project/ $ printf 'a    b\n' > in.txt
+labex:project/ $ ./nine in.txt out.txt
+labex:project/ $ cat -A out.txt
+```
+Вывод:
+```
+a^Ib$
+```
+
 ## Задача 10
 
 Написать программу, которая выводит названия всех пустых текстовых файлов в указанной директории. Директория передается в программу параметром. 
