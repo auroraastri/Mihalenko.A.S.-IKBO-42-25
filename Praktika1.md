@@ -277,6 +277,32 @@ a^Ib$
 
 Написать программу, которая выводит названия всех пустых текстовых файлов в указанной директории. Директория передается в программу параметром. 
 
+Код файла ten, созданного в консоли:
+```
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <dir>" >&2
+    exit 1
+fi
+
+find "$1" -type f -name '*.txt' -empty
+```
+
+Проверка кода:
+```
+nano empty_files.sh
+chmod +x empty_files.sh
+shellcheck empty_files.sh
+mkdir t10
+touch t10/empty.txt
+echo hi > t10/full.txt
+./empty_files.sh t10
+```
+Вывод:
+```
+764efa883dda1e11db47671c4a3bbd9e t10/empty.txt
+```
+
 ## Полезные ссылки
 
 Линукс в браузере: https://bellard.org/jslinux/
