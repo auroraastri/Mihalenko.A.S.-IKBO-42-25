@@ -115,6 +115,35 @@ cout endl include int iostream lalalalalala main namespace return std using
 ./reg banner
 ```
 
+Код файла pyat:
+```
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <file>" >&2
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Файл $1 не найден" >&2
+    exit 1
+fi
+
+sudo install -m 755 "$1" /usr/local/bin/
+```
+
+Ответ:
+```
+labex:project/ $ nano pyat
+abex:project/ $ chmod +x pyat
+labex:project/ $ ./pyat banner
+
+labex:project/ $ ls -l /usr/local/bin/banner
+```
+Вывод:
+```
+-rwxr-xr-x 1 root root 0 Sep 30 23:02 /usr/local/bin/banner
+```
+
 В результате для banner задаются правильные права доступа и сам banner копируется в /usr/local/bin.
 
 ## Задача 6
