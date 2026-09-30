@@ -169,11 +169,22 @@ find "$dir" -type f \( -name '*.c' -o -name '*.js' -o -name '*.py' \) | while IF
 done
 ```
 
-Ответ:
+Проверка кода:
 ```
 labex:project/ $ nano six
 labex:project/ $ chmod +x six
-labex:project/ $ shellcheck six
+labex:project/ $ mkdir t6 && cd t6
+labex:t6/ $ echo "// comment" > a.c
+labex:t6/ $ echo "int x;" > b.c
+labex:t6/ $ echo "# comment" > c.py
+labex:t6/ $ cd ..
+labex:project/ $ ./six t6
+```
+Вывод:
+```
+t6/a.c: комментарий есть
+t6/b.c: комментария нет
+t6/c.py: комментарий есть
 ```
 
 ## Задача 7
