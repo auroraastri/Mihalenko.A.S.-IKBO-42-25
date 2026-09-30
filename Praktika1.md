@@ -180,6 +180,36 @@ labex:project/ $ shellcheck six
 
 Написать программу для нахождения файлов-дубликатов (имеющих 1 или более копий содержимого) по заданному пути (и подкаталогам).
 
+Код файла seven, созданного в консоли:
+```
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <dir>" >&2
+    exit 1
+fi
+
+find "$1" -type f -exec md5sum {} + | sort | uniq -w32 --all-repeated=separate
+```
+
+Создание и проверка файла seven через ShellCheck идентична заданию 6
+
+Проверка кода:
+```
+labex:project/ $ nano seven
+labex:project/ $ chmod +x seven
+labex:project/ $ mkdir t7
+labex:project/ $ echo hi > t7/a.txt
+labex:project/ $ cp t7/a.txt t7/b.txt
+labex:project/ $ echo other > t7/c.txt
+labex:project/ $ ./seven t7
+```
+Вывод:
+```
+764efa883dda1e11db47671c4a3bbd9e  t7/a.txt
+764efa883dda1e11db47671c4a3bbd9e  t7/b.txt
+
+```
+
 ## Задача 8
 
 Написать программу, которая находит все файлы в данном каталоге с расширением, указанным в качестве аргумента и архивирует все эти файлы в архив tar.
