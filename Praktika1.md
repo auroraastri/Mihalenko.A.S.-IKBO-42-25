@@ -207,7 +207,6 @@ labex:project/ $ ./seven t7
 ```
 764efa883dda1e11db47671c4a3bbd9e  t7/a.txt
 764efa883dda1e11db47671c4a3bbd9e  t7/b.txt
-
 ```
 
 ## Задача 8
