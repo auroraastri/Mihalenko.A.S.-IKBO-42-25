@@ -244,8 +244,8 @@ labex:project/ $ nano eight
 labex:project/ $ chmod +x eight
 labex:project/ $ shellcheck eight
 labex:project/ $ mkdir t8 && cd t8
-labex:project/ $ touch a.txt b.txt c.log
-labex:project/ $ cd ..
+labex:t8/ $ touch a.txt b.txt c.log
+labex:t8/ $ cd ..
 labex:project/ $ ./eight t8 txt
 labex:project/ $ tar -tf archive_txt.tar
 ```
@@ -301,13 +301,13 @@ find "$1" -type f -name '*.txt' -empty
 
 Проверка кода:
 ```
-nano empty_files.sh
-chmod +x empty_files.sh
-shellcheck empty_files.sh
-mkdir t10
-touch t10/empty.txt
-echo hi > t10/full.txt
-./empty_files.sh t10
+labex:project/ $ nano empty_files.sh
+labex:project/ $ chmod +x empty_files.sh
+labex:project/ $ shellcheck empty_files.sh
+labex:project/ $ mkdir t10
+labex:project/ $ touch t10/empty.txt
+labex:project/ $ echo hi > t10/full.txt
+labex:project/ $ ./empty_files.sh t10
 ```
 Вывод:
 ```
