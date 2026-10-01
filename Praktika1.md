@@ -247,12 +247,11 @@ labex:project/ $ mkdir t8 && cd t8
 labex:t8/ $ touch a.txt b.txt c.log
 labex:t8/ $ cd ..
 labex:project/ $ ./eight t8 txt
-labex:project/ $ tar -tf archive_txt.tar
 ```
 Вывод:
 ```
-764efa883dda1e11db47671c4a3bbd9e  t8/a.txt
-764efa883dda1e11db47671c4a3bbd9e  t8/b.txt
+t8/a.txt
+t8/b.txt
 ```
 
 ## Задача 9
