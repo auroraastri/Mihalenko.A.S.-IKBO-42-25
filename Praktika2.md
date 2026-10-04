@@ -121,13 +121,98 @@ v3.1.0rc2
 v3.1.1
 ...........
 
-git checkout <v3.1.0>
+git checkout v3.1.0
 ```
 
 
 ## Задача 2
 
 Вывести служебную информацию о пакете express (JavaScript). Разобрать основные элементы содержимого файла со служебной информацией из пакета. Как получить пакет без менеджера пакетов, прямо из репозитория?
+
+Служебная информация о пакете:
+```
+C:\Users\Anastasia>npm view express
+
+express@5.2.1 | MIT | deps: 28 | versions: 289
+Fast, unopinionated, minimalist web framework
+https://expressjs.com/
+
+keywords: express, framework, sinatra, web, http, rest, restful, router, app, api
+
+dist
+.tarball: https://registry.npmjs.org/express/-/express-5.2.1.tgz
+.shasum: 8f21d15b6d327f92b4794ecf8cb08a72f956ac04
+.integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==
+.unpackedSize: 75.4 kB
+
+dependencies:
+qs: ^6.14.0, depd: ^2.0.0, etag: ^1.8.1, once: ^1.4.0, send: ^1.1.0, vary: ^1.1.2, debug: ^4.4.0, fresh: ^2.0.0, cookie: ^0.7.1, router: ^2.2.0, accepts: ^2.0.0, type-is: ^2.0.1, parseurl: ^1.3.3, statuses: ^2.0.1, encodeurl: ^2.0.0, mime-types: ^3.0.0, proxy-addr: ^2.0.7, body-parser: ^2.2.1, escape-html: ^1.0.3, http-errors: ^2.0.0, on-finished: ^2.4.1, content-type: ^1.0.5, finalhandler: ^2.1.0, range-parser: ^1.2.1
+(...and 4 more.)
+
+maintainers:
+- wesleytodd <wes@wesleytodd.com>
+- jonchurch <npm@jonchurch.com>
+- ctcpip <c@labsector.com>
+- ulisesgascon <ulisesgascondev@gmail.com>
+- sheplu <jean.burellier@gmail.com>
+
+dist-tags:
+latest: 5.2.1
+latest-4: 4.22.3
+
+published 10 months ago by jonchurch <npm@jonchurch.com>
+```
+Также можно получить и более расширенную версию:
+```
+C:\Users\Anastasia>npm view express --json
+{
+  "_id": "express@5.2.1",
+  "_rev": "4391-d323566757f92741b5209ac354c093b3",
+  "name": "express",
+  "dist-tags": {
+    "latest": "5.2.1",
+    "latest-4": "4.22.3"
+  },
+  "versions": [
+    "0.14.0",
+    "0.14.1",
+    "1.0.0-beta",
+
+................
+
+  "_npmOperationalInternal": {
+    "tmp": "tmp/express_5.2.1_1764622183077_0.4726542587013707",
+    "host": "s3://npm-registry-packages-npm-production"
+  }
+}
+```
+Основные элементы содержимого файла со служебной информацией:
+```
+name	- имя пакета
+version	- версия пакета
+description	- краткое описание
+main	- точка входа: файл, который загружается при подключении пакета
+dependencies	- зависимости времени выполнения с диапазонами версий
+devDependencies	- зависимости для разработки и тестирования
+engines	- поддерживаемые версии Node.js
+scripts	- команды для тестов и сборки (например, npm test)
+files	- какие файлы входят в публикуемый пакет
+repository	- адрес репозитория
+license	- лицензия
+
+```
+Как получить пакет без менеджера пакетов:
+```
+C:\Users\Anastasia>git clone https://github.com/expressjs/express.git
+Cloning into 'express'...
+remote: Enumerating objects: 33588, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 33588 (delta 1), reused 0 (delta 0), pack-reused 33582 (from 2)
+Receiving objects: 100% (33588/33588), 9.77 MiB | 7.81 MiB/s, done.
+Resolving deltas: 100% (19105/19105), done.
+```
+
 
 ## Задача 3
 
