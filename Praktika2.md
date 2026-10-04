@@ -288,7 +288,9 @@ C:\Users\Anastasia>node deps_js.js
 C:\Users\Anastasia>dot -Tpng express.dot -o express.png
 ```
 Результат:
-<img width="351" height="264" alt="{4597C6BF-2EA9-4889-9F70-6E8969923096}" src="https://github.com/user-attachments/assets/10800f81-74cf-4754-aef9-7bbdd434be2a" />
+<img width="599" height="124" alt="{49A9E3FA-AF52-4114-8157-F4848D358CB9}" src="https://github.com/user-attachments/assets/f5fe4e4f-7ab2-4677-85b2-3bf965f49977" />
+<img width="821" height="1167" alt="{0886ADE4-8DD9-429E-B668-68F263EF848B}" src="https://github.com/user-attachments/assets/a0bf3e51-ff50-487c-9af6-b478904bcd73" />
+<img width="1581" height="1182" alt="{BBEC7F82-9C2F-427C-B1E7-0F3C0F9DA3DB}" src="https://github.com/user-attachments/assets/01c07bef-b6d8-46fc-9161-41e484051738" />
 
 ## Задача 4
 
