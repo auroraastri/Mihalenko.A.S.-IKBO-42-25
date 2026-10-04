@@ -362,7 +362,27 @@ shared 2.0.0 не имеет зависимостей.
 shared 1.0.0 зависит от target ^1.0.0.
 target 2.0.0 и 1.0.0 не имеют зависимостей.
 ```
+Код на MiniZinc для решения задачи:
+```
+var 0..2: foo;
+var 0..1: left;      
+var 0..1: right;     
+var 0..2: shared;    
+var 0..2: target;    
 
+constraint foo >= 1;         
+constraint target = 2;        
+
+constraint foo = 2 -> (left = 1 /\ right = 1);
+constraint left = 1 -> shared in {1, 2};
+constraint right = 1 -> shared = 1;
+constraint shared = 1 -> target = 1;
+
+solve satisfy;
+output ["foo=\(foo) left=\(left) right=\(right) shared=\(shared) target=\(target)\n"];
+```
+Вывод:
+<img width="420" height="90" alt="{6933E20D-99BF-4454-9DA7-CDCBAFF88927}" src="https://github.com/user-attachments/assets/c6044d89-6a2b-4d6e-bc1b-c85ea118981c" />
 ## Задача 7
 
 Представить задачу о зависимостях пакетов в общей форме. Здесь необходимо действовать аналогично реальному менеджеру пакетов. То есть получить описание пакета, а также его зависимости в виде структуры данных. Например, в виде словаря. В предыдущих задачах зависимости были явно заданы в системе ограничений. Теперь же систему ограничений надо построить автоматически, по метаданным.
