@@ -319,13 +319,11 @@ output ["билет: \(d), сумма трёх цифр = \(s)\n"];
 Вывод:
 <img width="540" height="161" alt="{5C46DBF9-FD34-4510-A148-252CC56C59FF}" src="https://github.com/user-attachments/assets/4d32f567-0021-45c7-a235-74748abd7a7b" />
 
-
 ## Задача 5
 
 Решить на MiniZinc задачу о зависимостях пакетов для рисунка, приведенного ниже.
 
 ![](images/pubgrub.png)
-
 Код на MiniZinc для решения задачи:
 ```
 var 1..6: menu;
