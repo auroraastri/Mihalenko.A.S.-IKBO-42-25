@@ -94,6 +94,36 @@ Provides-Extra	- необязательные группы зависимост�
 Classifier	- классификаторы PyPI: ОС, версии Python, тематика, лицензия
 ```
 
+Как получить пакет без менеджера пакетов:
+```
+C:\Users\Anastasia>git clone https://github.com/matplotlib/matplotlib.git
+Cloning into 'matplotlib'...
+remote: Enumerating objects: 357975, done.
+remote: Counting objects: 100% (1417/1417), done.
+remote: Compressing objects: 100% (759/759), done.
+remote: Total 357975 (delta 1155), reused 665 (delta 658), pack-reused 356558 (from 4)
+Receiving objects: 100% (357975/357975), 481.35 MiB | 8.72 MiB/s, done.
+Resolving deltas: 100% (247472/247472), done.
+Updating files: 100% (4595/4595), done.
+
+C:\Users\Anastasia>cd matplotlib
+
+C:\Users\Anastasia\matplotlib>git tag --list "v3.*"
+v3.0.0
+v3.0.0rc1
+v3.0.0rc2
+v3.0.1
+v3.0.2
+v3.0.3
+v3.1.0
+v3.1.0rc1
+v3.1.0rc2
+v3.1.1
+...........
+
+git checkout <v3.1.0>
+```
+
 
 ## Задача 2
 
