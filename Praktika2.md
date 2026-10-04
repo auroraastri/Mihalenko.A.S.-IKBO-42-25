@@ -62,46 +62,10 @@ Files:
   matplotlib\__pycache__\_animation_data.cpython-314.pyc
   matplotlib\__pycache__\_blocking_input.cpython-314.pyc
   matplotlib\__pycache__\_cm.cpython-314.pyc
-  matplotlib\__pycache__\_cm_bivar.cpython-314.pyc
-  matplotlib\__pycache__\_cm_listed.cpython-314.pyc
-  matplotlib\__pycache__\_cm_multivar.cpython-314.pyc
-  matplotlib\__pycache__\_color_data.cpython-314.pyc
-  matplotlib\__pycache__\_constrained_layout.cpython-314.pyc
-  matplotlib\__pycache__\_docstring.cpython-314.pyc
-  matplotlib\__pycache__\_enums.cpython-314.pyc
-  matplotlib\__pycache__\_fontconfig_pattern.cpython-314.pyc
-  matplotlib\__pycache__\_internal_utils.cpython-314.pyc
-  matplotlib\__pycache__\_layoutgrid.cpython-314.pyc
-  matplotlib\__pycache__\_mathtext.cpython-314.pyc
-  matplotlib\__pycache__\_mathtext_data.cpython-314.pyc
 
 .......................................
 
-  mpl_toolkits\axisartist\tests\__pycache__\__init__.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\conftest.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_angle_helper.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_axis_artist.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_axislines.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_floating_axes.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_grid_finder.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\__pycache__\test_grid_helper_curvelinear.cpython-314.pyc
-  mpl_toolkits\axisartist\tests\conftest.py
-  mpl_toolkits\axisartist\tests\test_angle_helper.py
-  mpl_toolkits\axisartist\tests\test_axis_artist.py
-  mpl_toolkits\axisartist\tests\test_axislines.py
-  mpl_toolkits\axisartist\tests\test_floating_axes.py
-  mpl_toolkits\axisartist\tests\test_grid_finder.py
-  mpl_toolkits\axisartist\tests\test_grid_helper_curvelinear.py
-  mpl_toolkits\mplot3d\__init__.py
-  mpl_toolkits\mplot3d\__pycache__\__init__.cpython-314.pyc
-  mpl_toolkits\mplot3d\__pycache__\art3d.cpython-314.pyc
-  mpl_toolkits\mplot3d\__pycache__\axes3d.cpython-314.pyc
-  mpl_toolkits\mplot3d\__pycache__\axis3d.cpython-314.pyc
-  mpl_toolkits\mplot3d\__pycache__\proj3d.cpython-314.pyc
-  mpl_toolkits\mplot3d\art3d.py
-  mpl_toolkits\mplot3d\axes3d.py
-  mpl_toolkits\mplot3d\axis3d.py
-  mpl_toolkits\mplot3d\proj3d.py
+
   mpl_toolkits\mplot3d\tests\__init__.py
   mpl_toolkits\mplot3d\tests\__pycache__\__init__.cpython-314.pyc
   mpl_toolkits\mplot3d\tests\__pycache__\conftest.cpython-314.pyc
@@ -114,6 +78,20 @@ Files:
   mpl_toolkits\mplot3d\tests\test_legend3d.py
   pylab.py
 ```
+
+Основные элементы содержимого файла со служебной информацией:
+Metadata-Version	- версия формата самого файла метаданных
+Name	- имя пакета
+Version	- версия пакета
+Summary	- краткое описание
+Home-page / Project-URL	- ссылки на сайт, репозиторий, документацию, трекер ошибок
+Author	- автор или сопровождающие
+License	- лицензия
+Requires-Python	- поддерживаемые версии Python
+Requires-Dist	- зависимости с ограничениями версий и условиями (extra, платформа)
+Provides-Extra	- необязательные группы зависимостей
+Classifier	- классификаторы PyPI: ОС, версии Python, тематика, лицензия
+
 
 
 ## Задача 2
