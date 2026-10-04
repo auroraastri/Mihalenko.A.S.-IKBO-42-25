@@ -218,6 +218,77 @@ Resolving deltas: 100% (19105/19105), done.
 
 Сформировать graphviz-код и получить изображения зависимостей matplotlib и express.
 
+Код на языке Питон для решения задачи:
+```
+from importlib.metadata import requires, PackageNotFoundError
+from packaging.requirements import Requirement
+
+def deps(name):
+    try:
+        reqs = requires(name) or []
+    except PackageNotFoundError:
+        return []
+    out = set()
+    for r in reqs:
+        req = Requirement(r)
+        if req.marker and not req.marker.evaluate({"extra": ""}):
+            continue  
+        out.add(req.name.lower())
+    return sorted(out)
+
+edges, seen, stack = [], set(), ["matplotlib"]
+while stack:
+    p = stack.pop()
+    if p in seen:
+        continue
+    seen.add(p)
+    for d in deps(p):
+        edges.append((p, d))
+        stack.append(d)
+
+with open("matplotlib.dot", "w") as f:
+    f.write("digraph G {\n  rankdir=LR;\n")
+    for a, b in edges:
+        f.write(f'  "{a}" -> "{b}";\n')
+    f.write("}\n")
+```
+Код на языке Джава для решения задачи:
+```
+const fs = require('fs');
+const path = require('path');
+ 
+const seen = new Set();
+const edges = [];
+ 
+function walk(name) {
+  if (seen.has(name)) return;
+  seen.add(name);
+  const f = path.join('node_modules', name, 'package.json');
+  if (!fs.existsSync(f)) return;
+  const deps = Object.keys(JSON.parse(fs.readFileSync(f)).dependencies || {});
+  for (const d of deps) {
+    edges.push([name, d]);
+    walk(d);
+  }
+}
+ 
+walk('express');
+ 
+let s = 'digraph G {\n  rankdir=LR;\n';
+for (const [a, b] of edges) s += `  "${a}" -> "${b}";\n`;
+fs.writeFileSync('express.dot', s + '}\n');
+```
+
+Получение изображений:
+```
+C:\Users\Anastasia>python deps_py.py
+C:\Users\Anastasia>dot -Tpng matplotlib.dot -o matplotlib.png
+
+C:\Users\Anastasia>node deps_js.js
+C:\Users\Anastasia>dot -Tpng express.dot -o express.png
+```
+Результат:
+
 ## Задача 4
 
 **Следующие задачи можно решать с помощью инструментов на выбор:**
