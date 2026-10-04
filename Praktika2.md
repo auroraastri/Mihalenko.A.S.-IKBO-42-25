@@ -288,6 +288,7 @@ C:\Users\Anastasia>node deps_js.js
 C:\Users\Anastasia>dot -Tpng express.dot -o express.png
 ```
 Результат:
+<img width="351" height="264" alt="{4597C6BF-2EA9-4889-9F70-6E8969923096}" src="https://github.com/user-attachments/assets/10800f81-74cf-4754-aef9-7bbdd434be2a" />
 
 ## Задача 4
 
