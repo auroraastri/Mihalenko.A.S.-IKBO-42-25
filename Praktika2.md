@@ -326,6 +326,30 @@ output ["билет: \(d), сумма трёх цифр = \(s)\n"];
 
 ![](images/pubgrub.png)
 
+Код на MiniZinc для решения задачи:
+```
+var 1..6: menu;
+var 1..5: dropdown;
+var 1..2: icons;
+
+constraint icons = 1;
+
+constraint menu >= 2 -> dropdown >= 2;
+
+constraint menu = 1 -> dropdown = 1;
+
+constraint dropdown >= 2 -> icons = 2;
+
+solve maximize menu * 100 + dropdown * 10 + icons;
+
+output [
+  "menu = ", show(["1.0.0","1.1.0","1.2.0","1.3.0","1.4.0","1.5.0"][fix(menu)]), "\n",
+  "dropdown = ", show(["1.8.0","2.0.0","2.1.0","2.2.0","2.3.0"][fix(dropdown)]), "\n",
+  "icons = ", show(["1.0.0","2.0.0"][fix(icons)]), "\n"
+```
+Вывод:
+<img width="324" height="156" alt="{6F3FB4FD-8F10-4F9D-A2AD-7AE58D712B3D}" src="https://github.com/user-attachments/assets/1b3df868-8905-432b-9cdd-ded78ac78b7b" />
+
 ## Задача 6
 
 Решить на MiniZinc задачу о зависимостях пакетов для следующих данных:
