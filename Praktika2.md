@@ -387,6 +387,75 @@ output ["foo=\(foo) left=\(left) right=\(right) shared=\(shared) target=\(target
 
 Представить задачу о зависимостях пакетов в общей форме. Здесь необходимо действовать аналогично реальному менеджеру пакетов. То есть получить описание пакета, а также его зависимости в виде структуры данных. Например, в виде словаря. В предыдущих задачах зависимости были явно заданы в системе ограничений. Теперь же систему ограничений надо построить автоматически, по метаданным.
 
+Код на языке Питон для решения задачи:
+```
+import re, subprocess, tempfile
+
+repo = {
+    "root":   {"1.0.0": {"foo": "^1.0.0", "target": "^2.0.0"}},
+    "foo":    {"1.1.0": {"left": "^1.0.0", "right": "^1.0.0"}, "1.0.0": {}},
+    "left":   {"1.0.0": {"shared": ">=1.0.0"}},
+    "right":  {"1.0.0": {"shared": "<2.0.0"}},
+    "shared": {"2.0.0": {}, "1.0.0": {"target": "^1.0.0"}},
+    "target": {"2.0.0": {}, "1.0.0": {}},
+}
+
+def parse(v): return tuple(int(x) for x in v.split("."))
+
+def satisfies(ver, spec):
+    v = parse(ver)
+    for part in spec.split(","):
+        op, base = re.match(r"\s*(\^|~|>=|<=|>|<|=)?\s*(\d+\.\d+\.\d+)", part).groups()
+        op, b = op or "=", parse(base)
+        if op == "^":
+            up = (b[0]+1, 0, 0) if b[0] else (0, b[1]+1, 0) if b[1] else (0, 0, b[2]+1)
+            ok = b <= v < up
+        elif op == "~": ok = b <= v < (b[0], b[1]+1, 0)
+        elif op == ">=": ok = v >= b
+        elif op == "<=": ok = v <= b
+        elif op == ">":  ok = v > b
+        elif op == "<":  ok = v < b
+        else:            ok = v == b
+        if not ok:
+            return False
+    return True
+
+vers = {p: sorted(vs, key=parse) for p, vs in repo.items()}
+
+lines = [f"var 0..{len(vs)}: {p};" for p, vs in vers.items()]
+lines.append("constraint root = 1;")
+for p, vs in vers.items():
+    for i, v in enumerate(vs, 1):
+        for dep, spec in repo[p][v].items():
+            ok = [j for j, dv in enumerate(vers[dep], 1) if satisfies(dv, spec)]
+            allowed = "{" + ",".join(map(str, ok)) + "}" if ok else "{}"
+            lines.append(f"constraint {p} = {i} -> {dep} in {allowed};")
+lines.append("solve satisfy;")
+
+with tempfile.NamedTemporaryFile("w", suffix=".mzn", delete=False) as f:
+    f.write("\n".join(lines))
+print(open(f.name).read())
+print(subprocess.run(["minizinc", f.name], capture_output=True, text=True).stdout)
+```
+Вывод в командной строке:
+```
+C:\Users\Anastasia>python solve_deps.py
+var 0..1: root;
+var 0..2: foo;
+var 0..1: left;
+var 0..1: right;
+var 0..2: shared;
+var 0..2: target;
+constraint root = 1;
+constraint root = 1 -> foo in {1,2};
+constraint root = 1 -> target in {2};
+constraint foo = 2 -> left in {1};
+constraint foo = 2 -> right in {1};
+constraint left = 1 -> shared in {1,2};
+constraint right = 1 -> shared in {1};
+constraint shared = 1 -> target in {1};
+solve satisfy;
+```
 ## Полезные ссылки
 
 Semver: https://devhints.io/semver
