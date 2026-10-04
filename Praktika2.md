@@ -304,6 +304,23 @@ C:\Users\Anastasia>dot -Tpng express.dot -o express.png
 
 Решить на MiniZinc задачу о счастливых билетах. Добавить ограничение на то, что все цифры билета должны быть различными (подсказка: используйте all_different). Найти минимальное решение для суммы 3 цифр.
 
+Код на MiniZinc для решения задачи:
+```
+include "globals.mzn";
+
+array[1..6] of var 0..9: d;
+var 0..27: s = d[1] + d[2] + d[3];
+
+constraint s = d[4] + d[5] + d[6];
+constraint all_different(d);
+
+solve minimize s;
+output ["билет: \(d), сумма трёх цифр = \(s)\n"];
+```
+Вывод:
+<img width="540" height="161" alt="{5C46DBF9-FD34-4510-A148-252CC56C59FF}" src="https://github.com/user-attachments/assets/4d32f567-0021-45c7-a235-74748abd7a7b" />
+
+
 ## Задача 5
 
 Решить на MiniZinc задачу о зависимостях пакетов для рисунка, приведенного ниже.
